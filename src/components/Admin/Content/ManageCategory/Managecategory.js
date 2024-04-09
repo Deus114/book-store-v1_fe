@@ -14,7 +14,7 @@ const ManageCategory = (props) => {
     const [showModalUpdate, setShowModalUpdate] = useState(false);
     const [showModalDelete, setShowModalDelete] = useState(false);
     const [categoryUpdate, setcategoryUpdate] = useState({});
-    const [pageCount, setPageCount] = useState(0);
+    const [pageCount, setPageCount] = useState(1);
 
     const [listCategory, setListCategory] = useState([]);
 

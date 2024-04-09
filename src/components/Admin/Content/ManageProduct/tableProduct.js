@@ -37,12 +37,12 @@ const TableProduct = (props) => {
                                             View
                                         </button>
                                         <button className="btn btn-warning mx-3"
-                                        // onClick={() => props.handleClickUpdate(item)}
+                                            onClick={() => props.handleClickUpdate(item)}
                                         >
                                             Edit
                                         </button>
                                         <button className="btn btn-danger"
-                                        // onClick={() => props.handleClickDelete(item)}
+                                            onClick={() => props.handleClickDelete(item)}
                                         >
                                             Delete
                                         </button>

@@ -1,20 +1,20 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { delelteCategory } from '../../../../services/apiService';
+import { delelteProduct } from '../../../../services/apiService';
 import { toast } from 'react-toastify';
 
-const DeleteCategory = (props) => {
-    const { show, setShow, categoryUpdate } = props;
+const DeleteProduct = (props) => {
+    const { show, setShow, productUpdate } = props;
 
     const handleClose = () => setShow(false);
 
     const handleConfirm = async () => {
-        let res = await delelteCategory(categoryUpdate._id);
+        let res = await delelteProduct(productUpdate._id);
         if (res && res.EC === 0) {
-            toast.success(res.EM);
-            handleClose();
             props.setCurrentpage(1);
             await props.fetchList(1);
+            handleClose();
+            toast.success(res.EM);
         }
         if (res && res.EC !== 0) {
             toast.error(res.EM);
@@ -25,9 +25,9 @@ const DeleteCategory = (props) => {
         <>
             <Modal show={show} onHide={handleClose} backdrop='static'>
                 <Modal.Header closeButton>
-                    <Modal.Title>Confirm delete category ?</Modal.Title>
+                    <Modal.Title>Confirm delete product ?</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Do you want delete category: <b>{categoryUpdate && categoryUpdate.name ? categoryUpdate.name : ""}</b>
+                <Modal.Body>Do you want delete product: <b>{productUpdate && productUpdate.name ? productUpdate.name : ""}</b>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
@@ -42,4 +42,4 @@ const DeleteCategory = (props) => {
     );
 }
 
-export default DeleteCategory;
+export default DeleteProduct;

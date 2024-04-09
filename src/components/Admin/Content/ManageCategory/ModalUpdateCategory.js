@@ -29,9 +29,9 @@ const ModalUpdateCategory = (props) => {
         // call API
         let res = await putUpdateCategory(categoryUpdate._id, name, status);
         if (res && res.EC === 0) {
-            toast.success(res.EM);
             await props.fetchList(props.currentpage);
             handleClose();
+            toast.success(res.EM);
         }
         if (res && res.EC !== 0) {
             toast.error(res.EM);

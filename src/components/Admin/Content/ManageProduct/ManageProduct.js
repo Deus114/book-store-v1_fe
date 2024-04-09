@@ -5,6 +5,8 @@ import { getProductsPaginate, getallCategories } from "../../../../services/apiS
 import ModalCreateProduct from "./ModalCreateProduct";
 import TableProduct from "./tableProduct";
 import ViewProduct from "./viewProduct";
+import ModalUpdateProduct from "./ModalUpdateProduct";
+import DeleteProduct from "./ModalDeleteProduct";
 
 const ManageProduct = (props) => {
     const limitUser = 5;
@@ -14,7 +16,7 @@ const ManageProduct = (props) => {
     const [showModalDelete, setShowModalDelete] = useState(false);
     const [productUpdate, setproductUpdate] = useState({});
     const [showView, setShowView] = useState(false);
-    const [pageCount, setPageCount] = useState(0);
+    const [pageCount, setPageCount] = useState(1);
 
     const [listCategories, setListCategories] = useState([]);
     const [listProducts, setListProducts] = useState([]);
@@ -40,10 +42,10 @@ const ManageProduct = (props) => {
         }
     }
 
-    // // const handleClickUpdate = (user) => {
-    // //     setShowModalUpdate(true);
-    // //     setuserUpdate(user);
-    // // }
+    const handleClickUpdate = (product) => {
+        setShowModalUpdate(true);
+        setproductUpdate(product);
+    }
 
     const resetproductUpdate = () => {
         setproductUpdate({});
@@ -54,10 +56,10 @@ const ManageProduct = (props) => {
         setproductUpdate(product);
     }
 
-    // // const handleClickDelete = (user) => {
-    // //     setShowModalDelete(true);
-    // //     setuserUpdate(user);
-    // // }
+    const handleClickDelete = (product) => {
+        setShowModalDelete(true);
+        setproductUpdate(product);
+    }
 
     return (
         <div className="manage-user-container">
@@ -73,9 +75,9 @@ const ManageProduct = (props) => {
                 <div>
                     <TableProduct
                         listProducts={listProducts}
-                        // handleClickUpdate={handleClickUpdate}
+                        handleClickUpdate={handleClickUpdate}
                         handleClickView={handleClickView}
-                        // handleClickDelete={handleClickDelete}
+                        handleClickDelete={handleClickDelete}
                         pageCount={pageCount}
                         fetchList={fetchListPaginate}
                         currentpage={currentpage}
@@ -90,28 +92,29 @@ const ManageProduct = (props) => {
                         setCurrentpage={setCurrentpage}
                     />
                 </div>
-                {/* <ModalUpdateUser
+                <ModalUpdateProduct
                     show={showModalUpdate}
                     setShow={setShowModalUpdate}
                     fetchList={fetchListPaginate}
-                    userUpdate={userUpdate}
-                    resetUserUpdate={resetUserUpdate}
+                    productUpdate={productUpdate}
+                    resetproductUpdate={resetproductUpdate}
                     currentpage={currentpage}
-                /> */}
+                    listCategories={listCategories}
+                />
                 <ViewProduct
                     show={showView}
                     setShow={setShowView}
                     productUpdate={productUpdate}
                     resetproductUpdate={resetproductUpdate}
                 />
-                {/* <DeleteUser
+                <DeleteProduct
                     show={showModalDelete}
                     setShow={setShowModalDelete}
-                    userUpdate={userUpdate}
+                    productUpdate={productUpdate}
                     fetchList={fetchListPaginate}
                     currentpage={currentpage}
                     setCurrentpage={setCurrentpage}
-                /> */}
+                />
             </div>
         </div>
     )

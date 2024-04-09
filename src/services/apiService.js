@@ -87,9 +87,28 @@ const postCreateNewProduct = (name, price, desc, author, nxb, status, category, 
     return axios.post('api/product', data);
 }
 
+const putUpdateProduct = (id, name, price, desc, author, nxb, status, category, image) => {
+    const data = new FormData();
+    data.append('id', id);
+    data.append('name', name);
+    data.append('price', price);
+    data.append('desc', desc);
+    data.append('author', author);
+    data.append('nxb', nxb);
+    data.append('status', status);
+    data.append('category', category);
+    data.append('image', image);
+    return axios.put('api/update-product', data);
+}
+
 const getProductsPaginate = (page, limit) => {
     return axios.get(`api/products?page=${page}&limit=${limit}`);
 }
+
+const delelteProduct = (id) => {
+    return axios.delete('api/delete-product', { data: { id: id } });
+}
+
 
 export {
     postCreateNewUser, getAllUsers,
@@ -98,5 +117,6 @@ export {
     postRegister, postCreateNewCategory,
     getAllCategories, putUpdateCategory,
     delelteCategory, getallCategories,
-    postCreateNewProduct, getProductsPaginate
+    postCreateNewProduct, getProductsPaginate,
+    putUpdateProduct, delelteProduct
 };
