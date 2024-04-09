@@ -105,6 +105,10 @@ const getProductsPaginate = (page, limit) => {
     return axios.get(`api/products?page=${page}&limit=${limit}`);
 }
 
+const getProductsNew = () => {
+    return axios.get(`api/products-new`);
+}
+
 const delelteProduct = (id) => {
     return axios.delete('api/delete-product', { data: { id: id } });
 }
@@ -118,5 +122,6 @@ export {
     getAllCategories, putUpdateCategory,
     delelteCategory, getallCategories,
     postCreateNewProduct, getProductsPaginate,
-    putUpdateProduct, delelteProduct
+    putUpdateProduct, delelteProduct,
+    getProductsNew
 };
