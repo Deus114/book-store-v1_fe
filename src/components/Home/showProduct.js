@@ -13,7 +13,7 @@ const ShowProduct = () => {
 
     return (
         <>
-            <h4>{state.category ?
+            <h4 className='ttle'>{state.category ?
                 <>{state.category}</> :
                 <>Tất cả sản phẩm</>
             }</h4>

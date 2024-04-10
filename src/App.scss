@@ -156,6 +156,15 @@ body {
               cursor: pointer;
             }
           }
+
+        }
+
+        .ellipsis {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: #000;
+          font-weight: 500;
         }
       }
 
