@@ -17,6 +17,7 @@ import Register from './components/Auth/Register';
 import PrivateRoute from './routes/PrivateRoutes';
 import ManageProduct from './components/Admin/Content/ManageProduct/ManageProduct';
 import ShowProduct from './components/Home/showProduct';
+import ProductDetail from './components/Home/productDetail';
 
 const Layout = () => {
     return (
@@ -27,6 +28,7 @@ const Layout = () => {
                     <Route index element={<Homepage />}></Route>
                     <Route path="user" element={<User />} />
                     <Route path="show-product" element={<ShowProduct />} />
+                    <Route path="product-detail" element={<ProductDetail />} />
                 </Route>
 
                 <Route path="/admin" element={

@@ -40,7 +40,7 @@ const Login = () => {
                 <button onClick={() => navigate('/register')}>Sign up</button >
             </div>
             <div className='title col-4 mx-auto'>
-                Login to Quizz
+                Login
             </div>
             <div className='welcome col-4 mx-auto'>
                 Hello, who's this

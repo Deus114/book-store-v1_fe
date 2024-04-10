@@ -2,25 +2,22 @@ import { FETCH_USER_LOGIN_SUCCESS, USER_LOGOUT_SUCCESS } from '../action/userAct
 
 const INITIAL_STATE = {
     account: {
-        access_token: '',
-        refresh_token: '',
+        id: '',
         email: '',
         user: '',
-        image: '',
         role: '',
     },
     isAuthenticated: false,
 };
+
 const userReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case FETCH_USER_LOGIN_SUCCESS:
             return {
                 ...state, account: {
-                    access_token: action?.payload?.DT?.access_token,
-                    refresh_token: action?.payload?.DT?.refresh_token,
+                    id: action?.payload?.DT?._id,
                     email: action?.payload?.DT?.email,
                     user: action?.payload?.DT?.username,
-                    image: action?.payload?.DT?.image,
                     role: action?.payload?.DT?.role,
                 },
                 isAuthenticated: true

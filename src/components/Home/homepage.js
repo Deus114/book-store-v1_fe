@@ -28,9 +28,13 @@ const Homepage = () => {
         }
     }
 
+    const handleClickProduct = (product) => {
+        navigate('/product-detail', { state: { product: product } });
+    }
+
     return (
         <>
-            <h4>SẢN PHẨM MỚI NHẤT</h4>
+            <h4 className='ttle'>SẢN PHẨM MỚI NHẤT</h4>
             <div className="row">
                 <div className="row justify-content-start">
                     {listProductsnew && listProductsnew.length > 0 &&
@@ -38,24 +42,22 @@ const Homepage = () => {
                             let src = `data:image/jpeg;base64,${item.image}`;
 
                             return (
-                                <>
-                                    <div className="card col-sm-3" key={`product-${index}`}>
-                                        <div>
-                                            <img className="rounded mx-auto d-block prdimg-home" src={src} />
-                                        </div>
-                                        <span className="card-text ellipsis">{item.name}</span>
-                                        <div className="card-body">
-                                            <p className="card-text">{item.price.toLocaleString()} đ</p>
-                                            <button className="btn btn-primary res">Thêm giỏ hàng</button>
-                                        </div>
+                                <div className="card col-sm-3" key={`product-${index}`}>
+                                    <div onClick={() => handleClickProduct(item)}>
+                                        <img className="rounded mx-auto d-block prdimg-home" src={src} />
                                     </div>
-                                </>
+                                    <span className="card-text ellipsis">{item.name}</span>
+                                    <div className="card-body">
+                                        <p className="card-text">{(+item.price).toLocaleString()} đ</p>
+                                        <button className="btn btn-primary res">Thêm giỏ hàng</button>
+                                    </div>
+                                </div>
                             )
                         })
                     }
                 </div>
             </div> <br></br>
-            <h4>SẢN BÁN CHẠY NHẤT</h4>
+            <h4 className='ttle'>SẢN BÁN CHẠY NHẤT</h4>
             <div className="row">
                 <div className="row justify-content-start">
                     {listProductsbuy && listProductsbuy.length > 0 &&
@@ -63,18 +65,16 @@ const Homepage = () => {
                             let src = `data:image/jpeg;base64,${item.image}`;
 
                             return (
-                                <>
-                                    <div className="card col-sm-3" key={`product-${index}`}>
-                                        <div>
-                                            <img className="rounded mx-auto d-block prdimg-home" src={src} />
-                                        </div>
-                                        <span className="card-text ellipsis">{item.name}</span>
-                                        <div className="card-body">
-                                            <p className="card-text">{item.price.toLocaleString()} đ</p>
-                                            <button className="btn btn-primary res">Thêm giỏ hàng</button>
-                                        </div>
+                                <div className="card col-sm-3" key={`product-${index}`}>
+                                    <div onClick={() => handleClickProduct(item)}>
+                                        <img className="rounded mx-auto d-block prdimg-home" src={src} />
                                     </div>
-                                </>
+                                    <span className="card-text ellipsis">{item.name}</span>
+                                    <div className="card-body">
+                                        <p className="card-text">{(+item.price).toLocaleString()} đ</p>
+                                        <button className="btn btn-primary res">Thêm giỏ hàng</button>
+                                    </div>
+                                </div>
                             )
                         })
                     }
