@@ -23,7 +23,9 @@ const Login = () => {
             dispatch(doLogin(res));
             toast.success(res.EM);
             setIsLoading(false);
-            navigate('/')
+            if (res.DT.role === "ADMIN")
+                navigate('/admin');
+            else navigate('/');
         }
         if (res && res.EC !== 0) {
             toast.error(res.EM);

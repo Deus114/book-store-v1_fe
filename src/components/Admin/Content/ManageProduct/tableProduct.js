@@ -28,7 +28,7 @@ const TableProduct = (props) => {
                                 <tr key={`product-${index}`}>
                                     <td>{index + 1}</td>
                                     <td>{item.name}</td>
-                                    <td>{(+item.price).toLocaleString()}đ</td>
+                                    <td>{(+item.price).toLocaleString()} đ</td>
                                     <td>{item.status}</td>
                                     <td>
                                         <button className="btn btn-primary"

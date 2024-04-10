@@ -16,6 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Register from './components/Auth/Register';
 import PrivateRoute from './routes/PrivateRoutes';
 import ManageProduct from './components/Admin/Content/ManageProduct/ManageProduct';
+import ShowProduct from './components/Home/showProduct';
 
 const Layout = () => {
     return (
@@ -25,6 +26,7 @@ const Layout = () => {
                 <Route path="/" element={<App />} >
                     <Route index element={<Homepage />}></Route>
                     <Route path="user" element={<User />} />
+                    <Route path="show-product" element={<ShowProduct />} />
                 </Route>
 
                 <Route path="/admin" element={

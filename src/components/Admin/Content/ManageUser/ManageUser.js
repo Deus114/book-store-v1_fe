@@ -1,7 +1,6 @@
 import ModalCreateUser from "./ModalCreateUser";
 import "./ManageUser.scss"
 import { FcPlus } from "react-icons/fc";
-// import TableUser from "./tableUser";
 import { useEffect, useState } from "react";
 import { getUsersPaginate } from "../../../../services/apiService"
 import ModalUpdateUser from "./ModalUpdateUser";
@@ -24,20 +23,12 @@ const ManageUser = (props) => {
     // ComponentDidMount && no need asyn await
     useEffect(() => {
         fetchListPaginate(1);
-        // fetchList();
     }, [])
 
-    // const fetchList = async () => {
-    //     let res = await getAllUsers();
-    //     if (res.EC === 0) {
-    //         setListUser(res.DT);
-    //     }
-    // }
 
     const fetchListPaginate = async (page) => {
         let res = await getUsersPaginate(page, limitUser);
         if (res.EC === 0) {
-            console.log(res.DT)
             setListUser(res.DT.users);
             setPageCount(res.DT.totalPages);
         }

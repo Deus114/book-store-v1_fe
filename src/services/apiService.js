@@ -109,8 +109,20 @@ const getProductsNew = () => {
     return axios.get(`api/products-new`);
 }
 
+const getProductsBuy = () => {
+    return axios.get(`api/products-buy`);
+}
+
 const delelteProduct = (id) => {
     return axios.delete('api/delete-product', { data: { id: id } });
+}
+
+const getProductsByCat = (category) => {
+    return axios.get(`api/products-by-category`, {
+        params: {
+            category: category.name,
+        }
+    });
 }
 
 
@@ -123,5 +135,6 @@ export {
     delelteCategory, getallCategories,
     postCreateNewProduct, getProductsPaginate,
     putUpdateProduct, delelteProduct,
-    getProductsNew
+    getProductsNew, getProductsBuy,
+    getProductsByCat
 };

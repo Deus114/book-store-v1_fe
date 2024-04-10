@@ -95,12 +95,6 @@ const ModalUpdateProduct = (props) => {
                             />
                         </div>
                         <div className="col-md-6">
-                            <label className="form-label">Giới thiệu - mô tả</label>
-                            <input type="text" className="form-control"
-                                value={desc} onChange={(event) => setDesc(event.target.value)}
-                            />
-                        </div>
-                        <div className="col-md-6">
                             <label className="form-label">Tác giả</label>
                             <input type="text" className="form-control"
                                 value={author} onChange={(event) => setAuthor(event.target.value)}
@@ -132,6 +126,12 @@ const ModalUpdateProduct = (props) => {
                                     })
                                 }
                             </select>
+                        </div>
+                        <div className="col-md-6">
+                            <label className="form-label">Giới thiệu - mô tả</label>
+                            <textarea type="text" className="form-control"
+                                value={desc} onChange={(event) => setDesc(event.target.value)}
+                            />
                         </div>
                         <div className="col-md-12">
                             <label className="form-label label-upload" htmlFor="labelUpload">

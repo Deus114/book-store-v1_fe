@@ -48,9 +48,9 @@ const ModalCreateProduct = (props) => {
         let res = await postCreateNewProduct(name, price, desc, author, nxb, status, category, image);
         if (res && res.EC === 0) {
             props.setCurrentpage(1);
-            handleClose();
             await props.fetchList(1);
             toast.success(res.EM);
+            handleClose();
         }
         if (res && res.EC !== 0) {
             toast.error(res.EM);
@@ -84,12 +84,6 @@ const ModalCreateProduct = (props) => {
                             />
                         </div>
                         <div className="col-md-6">
-                            <label className="form-label">Giới thiệu - mô tả</label>
-                            <input type="text" className="form-control"
-                                value={desc} onChange={(event) => setDesc(event.target.value)}
-                            />
-                        </div>
-                        <div className="col-md-6">
                             <label className="form-label">Tác giả</label>
                             <input type="text" className="form-control"
                                 value={author} onChange={(event) => setAuthor(event.target.value)}
@@ -110,15 +104,22 @@ const ModalCreateProduct = (props) => {
                         </div>
                         <div className="col-md-6">
                             <label className="form-label">Thể loại</label>
-                            <select className="form-select" onChange={(event) => setCategory(event.target.value)}>
+                            <select className="form-select" defaultValue={listCategories[0]?.name}
+                                onChange={(event) => setCategory(event.target.value)}>
                                 {listCategories && listCategories.length > 0 &&
-                                    listCategories.map((item) => {
+                                    listCategories.map((item, index) => {
                                         return (
                                             <option value={item.name}>{item.name}</option>
                                         )
                                     })
                                 }
                             </select>
+                        </div>
+                        <div className="col-md-6">
+                            <label className="form-label">Giới thiệu - mô tả</label>
+                            <textarea type="text" className="form-control"
+                                value={desc} onChange={(event) => setDesc(event.target.value)}
+                            />
                         </div>
                         <div className="col-md-12">
                             <label className="form-label label-upload" htmlFor="labelUpload">

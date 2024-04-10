@@ -71,12 +71,6 @@ const ViewProduct = (props) => {
                             />
                         </div>
                         <div className="col-md-6">
-                            <label className="form-label">Giới thiệu - mô tả</label>
-                            <input type="text" className="form-control" disabled
-                                value={desc} onChange={(event) => setDesc(event.target.value)}
-                            />
-                        </div>
-                        <div className="col-md-6">
                             <label className="form-label">Tác giả</label>
                             <input type="text" className="form-control" disabled
                                 value={author} onChange={(event) => setAuthor(event.target.value)}
@@ -101,6 +95,24 @@ const ViewProduct = (props) => {
                                 onChange={(event) => setCategory(event.target.value)}>
                                 <option value={category}>{category}</option>
                             </select>
+                        </div>
+                        <div className="col-md-6">
+                            <label className="form-label">Giới thiệu - mô tả</label>
+                            <textarea type="text" className="form-control" disabled
+                                value={desc} onChange={(event) => setDesc(event.target.value)}
+                            />
+                        </div>
+                        <div className="col-md-3">
+                            <label className="form-label">Lượt mua</label>
+                            <input type="text" className="form-control" disabled
+                                value={productUpdate.buy}
+                            />
+                        </div>
+                        <div className="col-md-3">
+                            <label className="form-label">Lượt xem</label>
+                            <input type="text" className="form-control" disabled
+                                value={productUpdate.watch}
+                            />
                         </div>
                         <div className="col-md-12">
                             <label className="form-label label-upload">
