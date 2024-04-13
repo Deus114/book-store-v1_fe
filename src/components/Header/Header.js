@@ -8,12 +8,13 @@ import logo from '../../assets/logo-bookstore.png'
 import { IoPersonOutline } from "react-icons/io5";
 import { AiOutlineHome } from "react-icons/ai";
 import { IoCart } from "react-icons/io5";
+import { useEffect } from 'react';
 
 const Header = () => {
     const navigate = useNavigate();
     const account = useSelector(state => state.user.account)
     const dispatch = useDispatch();
-    const isAuthenticated = useSelector(state => state.user.isAuthenticated)
+    const isAuthenticated = useSelector(state => state.user.isAuthenticated);
 
     const handleLogin = () => {
         navigate('/login');
@@ -56,7 +57,7 @@ const Header = () => {
                             //     <NavDropdown.Item onClick={() => handleLogout()}>Logout</NavDropdown.Item>
                             // </NavDropdown>
                             <>
-                                <NavLink to="/user" className='nav-link'><IoCart style={{ fontSize: '1.5rem' }} /></NavLink>
+                                <NavLink to="/cart" className='nav-link'><IoCart style={{ fontSize: '1.5rem' }} /></NavLink>
                                 <NavLink to="/user" className='nav-link'><IoPersonOutline />
                                     {
                                         account.username ? account.username : account.email

@@ -7,6 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f5f3f3;
+  width: 92%;
 }
 
 @media (min-width: 1400px) {
@@ -23,6 +24,8 @@ body {
 
 // Nav bar
 .app-container {
+  width: 103%;
+
   .header-container {
     background-color: #fff;
     width: 105%;
@@ -206,6 +209,45 @@ body {
 
         .desc-content {
           width: 80%;
+        }
+      }
+    }
+
+    .cart {
+      margin: auto;
+      width: 90% !important;
+      background-color: #fff;
+      min-height: 500px;
+
+      .info {
+        margin-top: 20px;
+        margin-left: 32% !important;
+        width: 50%;
+
+        h3 {
+          margin-left: 15%;
+        }
+
+        button {
+          margin-left: 25%;
+        }
+      }
+
+      .ttle {
+        margin-top: 10px;
+        margin-left: 15px;
+      }
+
+      table {
+        margin: auto;
+        width: 90%;
+
+        img,
+        svg {
+          &:hover {
+            opacity: 0.5;
+            cursor: pointer;
+          }
         }
       }
     }

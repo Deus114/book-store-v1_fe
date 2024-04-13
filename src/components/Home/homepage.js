@@ -1,16 +1,14 @@
 import { useNavigate } from 'react-router-dom'
-import { getProductsBuy, getProductsNew } from '../../services/apiService';
+import { getProductsBuy, getProductsNew, postCart } from '../../services/apiService';
 import { useEffect, useState } from 'react';
-// import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
+import { toast } from 'react-toastify';
+import React from 'react';
 
 const Homepage = () => {
     const navigate = useNavigate();
-    // const account =useSelector(state => state.user.account)
-    // const isAuthenticated =useSelector(state => state.user.isAuthenticated)
-
-    // const handleGetstart = () => {
-    //     navigate('/login');
-    // }
+    const account = useSelector(state => state.user.account)
+    const isAuthenticated = useSelector(state => state.user.isAuthenticated)
 
     const [listProductsnew, setlistProductsnew] = useState([]);
     const [listProductsbuy, setlistProductsbuy] = useState([]);
@@ -32,6 +30,24 @@ const Homepage = () => {
         navigate('/product-detail', { state: { product: product } });
     }
 
+    const handleClickAddCart = async (product) => {
+        if (!isAuthenticated) {
+            toast.success("Please login to add product to your cart");
+            navigate('/login');
+            window.location.reload();
+        }
+        else {
+            let res = await postCart(product.name, product.image, account.id, 1, product.price)
+            if (res.EC === 0) {
+                toast.success(res.EM);
+                navigate('/cart');
+            }
+            else {
+                toast.error(res.EM);
+            }
+        }
+    }
+
     return (
         <>
             <h4 className='ttle'>SẢN PHẨM MỚI NHẤT</h4>
@@ -49,7 +65,9 @@ const Homepage = () => {
                                     <span className="card-text ellipsis">{item.name}</span>
                                     <div className="card-body">
                                         <p className="card-text">{(+item.price).toLocaleString()} đ</p>
-                                        <button className="btn btn-primary res">Thêm giỏ hàng</button>
+                                        <button className="btn btn-primary res"
+                                            onClick={() => handleClickAddCart(item)}
+                                        >Thêm giỏ hàng</button>
                                     </div>
                                 </div>
                             )

@@ -9,6 +9,7 @@ import { BsCashCoin } from "react-icons/bs";
 import { IoEarthOutline } from "react-icons/io5";
 import { SiFacebook } from "react-icons/si";
 import { FaInstagram, FaTwitter } from "react-icons/fa";
+import React from 'react';
 
 const App = () => {
   const navigate = useNavigate();
@@ -39,30 +40,40 @@ const App = () => {
         <Header />
       </div>
       <div className='main-container'>
-        <div className='sidenav-container col-sm-3'>
-          <aside>
-            <h3 className="asi">DANH MỤC SẢN PHẨM</h3>
-            <ul className="list-group">
-              {listCategories && listCategories.length > 0 &&
-                listCategories.map((item, index) => {
-                  if (item.status === "SHOW") {
-                    return (
-                      <li key={`category-${index}`} className="list-group-item cate"
-                        onClick={() => handleClickCategory(item)}
-                      >{item.name}</li>
-                    )
+        {window.location.pathname === "/cart" || window.location.pathname === "/user" ?
+          <>
+            <div className='cart'>
+              <Outlet />
+            </div>
+          </>
+          :
+          <>
+            <div className='sidenav-container col-sm-3'>
+              <aside>
+                <h3 className="asi">DANH MỤC SẢN PHẨM</h3>
+                <ul className="list-group">
+                  {listCategories && listCategories.length > 0 &&
+                    listCategories.map((item, index) => {
+                      if (item.status === "SHOW") {
+                        return (
+                          <li key={`category-${index}`} className="list-group-item cate"
+                            onClick={() => handleClickCategory(item)}
+                          >{item.name}</li>
+                        )
+                      }
+                    })
                   }
-                })
-              }
-              <li className="list-group-item cate"
-                onClick={() => handleClickCategory({})}
-              >Tất cả</li>
-            </ul>
-          </aside>
-        </div>
-        <div className='app-content col-sm-8'>
-          <Outlet />
-        </div>
+                  <li className="list-group-item cate"
+                    onClick={() => handleClickCategory({})}
+                  >Tất cả</li>
+                </ul>
+              </aside>
+            </div>
+            <div className='app-content col-sm-8'>
+              <Outlet />
+            </div>
+          </>
+        }
       </div>
       <br></br>
       <div className='footer-container'>

@@ -1,5 +1,6 @@
 import axios from '../utils/axiosCuztomize';
 
+// User Api
 const postCreateNewUser = (email, password, username, phone, address, role, image) => {
     const data = new FormData();
     data.append('email', email);
@@ -35,6 +36,7 @@ const getUsersPaginate = (page, limit) => {
     return axios.get(`api/users?page=${page}&limit=${limit}`);
 }
 
+// Auth api
 const postLogin = (email, password) => {
     return axios.post(`api/login`,
         { email, password } // = {email:email, password: password}
@@ -47,6 +49,7 @@ const postRegister = (email, password, username) => {
     );
 }
 
+// Category api
 const postCreateNewCategory = (name, status) => {
     const data = new FormData();
     data.append('name', name);
@@ -74,6 +77,7 @@ const delelteCategory = (categoryId) => {
     return axios.delete('api/delete-category', { data: { id: categoryId } });
 }
 
+// Product Api
 const postCreateNewProduct = (name, price, desc, author, nxb, status, category, image) => {
     const data = new FormData();
     data.append('name', name);
@@ -125,6 +129,34 @@ const getProductsByCat = (category) => {
     });
 }
 
+// Cart Api
+const postCart = (productName, image, userId, quantity, price) => {
+    const data = new FormData();
+    data.append('productName', productName);
+    data.append('image', image);
+    data.append('userId', userId);
+    data.append('quantity', quantity);
+    data.append('price', price);
+    return axios.post('api/cart', data);
+}
+
+const plusProduct = (productName, userId, quantity) => {
+    const data = new FormData();
+    data.append('productName', productName);
+    data.append('image', "");
+    data.append('userId', userId);
+    data.append('quantity', quantity);
+    data.append('price', "");
+    return axios.post('api/cart', data);
+}
+
+const getuserCart = (id) => {
+    return axios.get('api/user-cart', {
+        params: {
+            id: id,
+        }
+    });
+}
 
 export {
     postCreateNewUser, getAllUsers,
@@ -136,5 +168,6 @@ export {
     postCreateNewProduct, getProductsPaginate,
     putUpdateProduct, delelteProduct,
     getProductsNew, getProductsBuy,
-    getProductsByCat
+    getProductsByCat, postCart,
+    getuserCart, plusProduct
 };

@@ -18,6 +18,8 @@ import PrivateRoute from './routes/PrivateRoutes';
 import ManageProduct from './components/Admin/Content/ManageProduct/ManageProduct';
 import ShowProduct from './components/Home/showProduct';
 import ProductDetail from './components/Home/productDetail';
+import PrivateRouteUser from './routes/PrivateRoutesUser';
+import Cart from './components/Cart/Cart';
 
 const Layout = () => {
     return (
@@ -26,10 +28,20 @@ const Layout = () => {
 
                 <Route path="/" element={<App />} >
                     <Route index element={<Homepage />}></Route>
-                    <Route path="user" element={<User />} />
                     <Route path="show-product" element={<ShowProduct />} />
                     <Route path="product-detail" element={<ProductDetail />} />
+                    <Route path="user" element={
+                        <PrivateRouteUser>
+                            <User />
+                        </PrivateRouteUser>
+                    } />
+                    <Route path="cart" element={
+                        <PrivateRouteUser>
+                            <Cart />
+                        </PrivateRouteUser>
+                    } />
                 </Route>
+
 
                 <Route path="/admin" element={
                     <PrivateRoute>
