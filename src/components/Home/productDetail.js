@@ -1,12 +1,35 @@
 import { useNavigate, useLocation } from 'react-router-dom'
+import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux'
+import { postCart } from '../../services/apiService';
 
 
 const ProductDetail = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const isAuthenticated = useSelector(state => state.user.isAuthenticated)
+    const account = useSelector(state => state.user.account)
     const { state } = location;
     let product = state?.product;
     let src = `data:image/jpeg;base64,${product.image}`;
+
+    const handleClickAddCart = async (product) => {
+        if (!isAuthenticated) {
+            toast.success("Please login to add product to your cart");
+            navigate('/login');
+            window.location.reload();
+        }
+        else {
+            let res = await postCart(product.name, product.image, account.id, 1, product.price)
+            if (res.EC === 0) {
+                toast.success(res.EM);
+                navigate('/cart');
+            }
+            else {
+                toast.error(res.EM);
+            }
+        }
+    }
 
     return (
         <>
@@ -31,8 +54,12 @@ const ProductDetail = () => {
                         <h4 className='price'>{(+product.price).toLocaleString()} đ</h4>
                     </div>
                     <div className='row'>
-                        <div className='col'><button className='btn btn-danger'>Mua ngay</button></div>
-                        <div className='col'><button className='btn btn-primary'>Thêm giỏ hàng</button></div>
+                        <div className='col'><button className='btn btn-danger'
+                            onClick={() => handleClickAddCart(product)}
+                        >Mua ngay</button></div>
+                        <div className='col'><button className='btn btn-primary'
+                            onClick={() => handleClickAddCart(product)}
+                        >Thêm giỏ hàng</button></div>
                     </div>
                 </div>
             </div>

@@ -90,7 +90,9 @@ const Homepage = () => {
                                     <span className="card-text ellipsis">{item.name}</span>
                                     <div className="card-body">
                                         <p className="card-text">{(+item.price).toLocaleString()} đ</p>
-                                        <button className="btn btn-primary res">Thêm giỏ hàng</button>
+                                        <button className="btn btn-primary res"
+                                            onClick={() => handleClickAddCart(item)}
+                                        >Thêm giỏ hàng</button>
                                     </div>
                                 </div>
                             )

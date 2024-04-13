@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux'
-import { getuserCart, plusProduct, postCart } from "../../services/apiService";
+import { deleteCart, getuserCart, plusProduct, postCart } from "../../services/apiService";
 import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
 import { toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
 
 const Cart = (props) => {
     const [listCart, setlistCart] = useState([]);
+    const navigate = useNavigate();
     let totalPrice = 0;
     let totalQuantity = 0;
     const account = useSelector(state => state.user.account)
@@ -33,7 +35,7 @@ const Cart = (props) => {
 
     const handleMinus = async (name, quantity) => {
         if (quantity === "1") {
-            const result = window.confirm(`You want to delete: ${name} ?`)
+            let result = window.confirm(`You want to delete: ${name} ?`)
             if (result) {
                 let res = await plusProduct(name, account.id, -1)
                 if (res.EC === 0) {
@@ -55,8 +57,25 @@ const Cart = (props) => {
         }
     }
 
+    const handleDeleteCart = async (id, name) => {
+        let result = window.confirm(`You want to delete: ${name} ?`)
+        if (result) {
+            let res = await deleteCart(id);
+            if (res.EC === 0) {
+                window.location.reload();
+            }
+            else {
+                toast.error(res.EM);
+            }
+        } else { }
+    }
+
     return (
         <>
+            <div>
+                <span className='back'
+                    onClick={() => navigate('/')}>&#60;&#60; Tiếp tục mua hàng</span>
+            </div>
             <h2 className="ttle">Giỏ hàng của bạn</h2>
             <hr />
             <table className="table table-hover">
@@ -88,7 +107,9 @@ const Cart = (props) => {
                                         onClick={() => handlePlus(item.productName)}
                                     /></td>
                                 <td>{((+item.price) * (+item.quantity)).toLocaleString()} đ</td>
-                                <td><button className="btn btn-danger">Xóa</button></td>
+                                <td><button className="btn btn-danger"
+                                    onClick={() => handleDeleteCart(item._id, item.productName)}
+                                >Xóa</button></td>
                             </tr>
                         )
                     })}
@@ -103,7 +124,12 @@ const Cart = (props) => {
                         <th colSpan="2">{totalPrice.toLocaleString()}đ</th>
                     </tr>
                 </tbody>
+                <br></br>
+                <button className="btn btn-success"
+                    onClick={() => { window.alert("Update soon !!!") }}
+                >Mua hàng</button>
             </table>
+            <br></br>
         </>
     )
 };

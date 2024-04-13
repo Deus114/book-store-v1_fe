@@ -213,6 +213,14 @@ body {
       }
     }
 
+    .back {
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+
     .cart {
       margin: auto;
       width: 90% !important;

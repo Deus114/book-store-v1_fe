@@ -11,7 +11,12 @@
         width: 100%;
 
         .admin-header {
+            width: 110%;
             margin-left: 1%;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            border-bottom: solid 1px;
 
             .side-toggle {
                 cursor: pointer;
@@ -20,8 +25,48 @@
                     opacity: 0.7;
                 }
             }
+
+            .btn-logout {
+                border-radius: 5px;
+                padding: 0 15px;
+                border: solid 1px rgb(53, 53, 53);
+                height: 40px;
+                margin-left: 85%;
+            }
         }
 
-        // .admin-main {}
+        .admin-main {
+            .title {
+                margin-top: 30px;
+                margin-left: 45%;
+            }
+
+            .board {
+                margin-left: 15%;
+
+                .row {
+                    margin-top: 50px;
+                    display: flex;
+                    gap: 10%;
+
+                    .col-sm-3 {
+                        padding: 20px 0px;
+                        text-align: center;
+                        border: 1px solid;
+                        min-height: 125px;
+
+                        h5 {
+                            color: green;
+                        }
+
+                        span {
+                            font-size: large;
+                            color: red;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

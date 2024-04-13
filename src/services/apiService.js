@@ -158,6 +158,19 @@ const getuserCart = (id) => {
     });
 }
 
+const deleteCart = (id) => {
+    return axios.delete('api/delete-cart', {
+        params: {
+            id: id,
+        }
+    });
+}
+
+// Admin Board Api
+const getAdminBoard = () => {
+    return axios.get(`api/admin-board`);
+}
+
 export {
     postCreateNewUser, getAllUsers,
     putUpdateUser, delelteUser,
@@ -169,5 +182,6 @@ export {
     putUpdateProduct, delelteProduct,
     getProductsNew, getProductsBuy,
     getProductsByCat, postCart,
-    getuserCart, plusProduct
+    getuserCart, plusProduct,
+    deleteCart, getAdminBoard
 };

@@ -8,7 +8,6 @@ import logo from '../../assets/logo-bookstore.png'
 import { IoPersonOutline } from "react-icons/io5";
 import { AiOutlineHome } from "react-icons/ai";
 import { IoCart } from "react-icons/io5";
-import { useEffect } from 'react';
 
 const Header = () => {
     const navigate = useNavigate();

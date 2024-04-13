@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import { useSelector } from 'react-redux'
+import ModalUpdateUser from './ModalUpdateUser';
 
 const User = (props) => {
     const account = useSelector(state => state.user.account)
+    const [showModalUpdate, setShowModalUpdate] = useState(false);
 
     return (
         <div className="mx-auto info">
@@ -23,7 +26,14 @@ const User = (props) => {
                     <div className="row"><p>{account.address}</p></div>
                 </div>
             </div>
-            <button type="button" className="btn btn-primary">Chỉnh sửa</button>
+            <button type="button" className="btn btn-primary"
+                onClick={() => { setShowModalUpdate(true); }}
+            >Chỉnh sửa</button>
+            <ModalUpdateUser
+                show={showModalUpdate}
+                setShow={setShowModalUpdate}
+                account={account}
+            />
         </div>
     )
 };

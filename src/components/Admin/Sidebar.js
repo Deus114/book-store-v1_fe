@@ -80,7 +80,7 @@ const SideBar = (props) => {
                         }}
                     >
                         <a
-                            href="https://github.com/Deus114/reactjs_project"
+                            href="https://github.com/Deus114/book-store-v1_fe"
                             target="_blank"
                             className="sidebar-btn"
                             rel="noopener noreferrer"
