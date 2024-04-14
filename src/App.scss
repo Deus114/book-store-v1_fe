@@ -34,19 +34,26 @@ body {
       margin-left: 10%;
 
       .search {
+        min-width: 150px;
         width: 150% !important;
       }
     }
 
     #basic-navbar-nav {
       .mx-auto {
-        .pttt {
-          margin-left: -28% !important;
+        display: flex;
+        gap: 15px;
+
+        .navbar-nav {
+          margin-right: 0px !important;
         }
 
         a {
-          color: #000;
           text-decoration: none;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: #000;
         }
       }
     }
@@ -57,6 +64,10 @@ body {
       padding: 0 15px;
       border: solid 1px rgb(53, 53, 53);
       height: 40px;
+      text-decoration: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .btn-signup {
@@ -65,14 +76,27 @@ body {
       background-color: rgb(30, 30, 30);
       color: white;
       height: 40px;
+      text-decoration: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       &:hover {
         background-color: black;
       }
     }
 
+    .nav-link {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     .logout {
       margin-left: 20px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .navbar {
@@ -169,6 +193,14 @@ body {
           color: #000;
           font-weight: 500;
         }
+
+        .card-body {
+          button {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
       }
 
       .row {
@@ -190,6 +222,9 @@ body {
             .col {
               .btn-danger {
                 width: 50%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
               }
             }
 
@@ -197,6 +232,9 @@ body {
               .btn-primary {
                 width: 50%;
                 margin-left: -50%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
               }
             }
           }

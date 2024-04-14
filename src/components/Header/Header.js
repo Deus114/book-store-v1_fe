@@ -40,9 +40,9 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mx-auto">
-                        <NavLink to="/" className='nav-link'><AiOutlineHome /> Trang chủ</NavLink>
+                        <NavLink to="/" className='nav-link home'><AiOutlineHome /> <span>Trang chủ</span> </NavLink>
                         <Nav className='nav-link'><a href='#footer'>Liên hệ</a></Nav>
-                        <Nav className='nav-link'><a href='#footer' className='pttt'>Phương thức thanh toán</a></Nav>
+                        <Nav className='nav-link'><a href='#footer'>Phương thức thanh toán</a></Nav>
                     </Nav>
                     <Nav>
                         {isAuthenticated === false ?
