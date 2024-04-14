@@ -51,6 +51,9 @@ const Login = () => {
                     <input type={"email"} className="form-control"
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
+                        onKeyDown={(event) => {
+                            if (event && event.key === 'Enter') { handleLogin(); }
+                        }}
                     />
                 </div>
                 <div className='form-group'>
@@ -58,6 +61,9 @@ const Login = () => {
                     <input type={"password"} className="form-control"
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
+                        onKeyDown={(event) => {
+                            if (event && event.key === 'Enter') { handleLogin(); }
+                        }}
                     />
                 </div>
                 <span>Forgot password?</span>

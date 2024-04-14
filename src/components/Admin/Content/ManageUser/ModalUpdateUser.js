@@ -15,9 +15,7 @@ const ModalUpdateUser = (props) => {
         setPassword("");
         setPhone("");
         setAddress("");
-        setImage("");
         setRole("USER");
-        setPreviewImage("");
         props.resetUserUpdate();
     }
     // state
@@ -27,8 +25,6 @@ const ModalUpdateUser = (props) => {
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const [role, setRole] = useState(userUpdate.role);
-    const [image, setImage] = useState("");
-    const [previewImage, setPreviewImage] = useState("");
 
     useEffect(() => {
         if (!_.isEmpty(userUpdate)) {
@@ -37,21 +33,12 @@ const ModalUpdateUser = (props) => {
             setAddress(userUpdate.address);
             setRole(userUpdate.role);
             setUsername(userUpdate.username);
-            if (userUpdate.image)
-                setPreviewImage(`data:image/jpeg;base64,${userUpdate.image}`);
         }
     }, [userUpdate])
 
-    const handleUploadImg = (event) => {
-        if (event.target && event.target.files && event.target.files[0]) {
-            setPreviewImage(URL.createObjectURL(event.target.files[0]))
-            setImage(event.target.files[0])
-        }
-    }
-
     const handleSubmit = async () => {
         // call API
-        let res = await putUpdateUser(userUpdate._id, username, phone, address, role, image);
+        let res = await putUpdateUser(userUpdate._id, username, phone, address, role);
         if (res && res.EC === 0) {
             await props.fetchList(props.currentpage);
             handleClose();
@@ -114,18 +101,6 @@ const ModalUpdateUser = (props) => {
                                 <option value="USER">USER</option>
                                 <option value="ADMIN">ADMIN</option>
                             </select>
-                        </div>
-                        <div className="col-md-12">
-                            <label className="form-label label-upload" htmlFor="labelUpload">
-                                <FcPlus /> Upload File Image</label>
-                            <input type='file' id='labelUpload' hidden onChange={(event) => handleUploadImg(event)} />
-                        </div>
-                        <div className="col--md-12 img-preview">
-                            {previewImage ?
-                                <img src={previewImage} />
-                                :
-                                <span>Preview</span>
-                            }
                         </div>
                     </form>
                 </Modal.Body>

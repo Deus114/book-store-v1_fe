@@ -12,9 +12,7 @@ const ViewUser = (props) => {
         setPassword("");
         setPhone("");
         setAddress("");
-        setImage("");
         setRole("USER");
-        setPreviewImage("");
         props.resetUserUpdate();
     }
     // state
@@ -24,8 +22,6 @@ const ViewUser = (props) => {
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const [role, setRole] = useState(userUpdate.role);
-    const [image, setImage] = useState("");
-    const [previewImage, setPreviewImage] = useState("");
 
     useEffect(() => {
         if (!_.isEmpty(userUpdate)) {
@@ -35,8 +31,6 @@ const ViewUser = (props) => {
             setAddress(userUpdate.address);
             setUsername(userUpdate.username);
             setPassword(userUpdate.password);
-            if (userUpdate.image)
-                setPreviewImage(`data:image/jpeg;base64,${userUpdate.image}`);
         }
     }, [userUpdate])
 
@@ -93,18 +87,6 @@ const ViewUser = (props) => {
                                 <option value="USER">USER</option>
                                 <option value="ADMIN">ADMIN</option>
                             </select>
-                        </div>
-                        <div className="col-md-12">
-                            <label className="form-label label-upload">
-                                Image
-                            </label>
-                        </div>
-                        <div className="col--md-12 img-preview">
-                            {previewImage ?
-                                <img src={previewImage} />
-                                :
-                                <span>Preview</span>
-                            }
                         </div>
                     </form>
                 </Modal.Body>

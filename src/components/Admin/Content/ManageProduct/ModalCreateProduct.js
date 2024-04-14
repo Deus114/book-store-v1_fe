@@ -39,7 +39,7 @@ const ModalCreateProduct = (props) => {
 
     const handleSubmit = async () => {
         // Validate
-        if (!name || !price || !image) {
+        if (!name || !price || !image || !category) {
             toast.error("Please fill all importan blank !");
             return;
         }
@@ -103,13 +103,14 @@ const ModalCreateProduct = (props) => {
                             </select>
                         </div>
                         <div className="col-md-6">
-                            <label className="form-label">Thể loại</label>
-                            <select className="form-select" defaultValue={listCategories[0]?.name}
+                            <label className="form-label">Thể loại (*)</label>
+                            <select className="form-select" defaultValue=""
                                 onChange={(event) => setCategory(event.target.value)}>
+                                <option value="">--Choose Category--</option>
                                 {listCategories && listCategories.length > 0 &&
                                     listCategories.map((item, index) => {
                                         return (
-                                            <option value={item.name}>{item.name}</option>
+                                            <option key={index} value={item.name}>{item.name}</option>
                                         )
                                     })
                                 }

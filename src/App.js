@@ -28,7 +28,7 @@ const App = () => {
   }
 
   const handleClickCategory = async (category) => {
-    let res = await getProductsByCat(category);
+    let res = await getProductsByCat(category.name, 0);
     if (res.EC === 0) {
       navigate('/show-product', { state: { listProduct: res.DT, category: category.name } });
     }

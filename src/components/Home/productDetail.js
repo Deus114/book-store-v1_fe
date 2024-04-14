@@ -15,9 +15,8 @@ const ProductDetail = () => {
 
     const handleClickAddCart = async (product) => {
         if (!isAuthenticated) {
-            toast.success("Please login to add product to your cart");
             navigate('/login');
-            window.location.reload();
+            toast.success("Please login to add product to your cart");
         }
         else {
             let res = await postCart(product.name, product.image, account.id, 1, product.price)

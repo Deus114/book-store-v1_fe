@@ -43,8 +43,6 @@ const ModalUpdateProduct = (props) => {
             setStatus(productUpdate.status);
             if (productUpdate.image)
                 setPreviewImage(`data:image/jpeg;base64,${productUpdate.image}`);
-
-            console.log(category);
         }
     }, [productUpdate])
 
@@ -119,9 +117,9 @@ const ModalUpdateProduct = (props) => {
                             <select className="form-select" defaultValue={productUpdate.category}
                                 onChange={(event) => setCategory(event.target.value)}>
                                 {listCategories && listCategories.length > 0 &&
-                                    listCategories.map((item) => {
+                                    listCategories.map((item, index) => {
                                         return (
-                                            <option value={item.name}>{item.name}</option>
+                                            <option key={index} value={item.name}>{item.name}</option>
                                         )
                                     })
                                 }

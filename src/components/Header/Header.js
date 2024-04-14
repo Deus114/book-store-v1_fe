@@ -56,11 +56,10 @@ const Header = () => {
                             //     <NavDropdown.Item onClick={() => handleLogout()}>Logout</NavDropdown.Item>
                             // </NavDropdown>
                             <>
-                                <NavLink to="/cart" className='nav-link'><IoCart style={{ fontSize: '1.5rem' }} /></NavLink>
-                                <NavLink to="/user" className='nav-link'><IoPersonOutline />
-                                    {
-                                        account.username ? account.username : account.email
-                                    }
+                                <NavLink to="/cart" className='nav-link'><IoCart style={{ fontSize: '1.5rem' }} /> Giỏ hàng</NavLink>
+                                <NavLink to="/user" className='nav-link'><IoPersonOutline /> {
+                                    account.user ? account.user : account.email
+                                }
                                 </NavLink>
                                 <button className='btn-login logout' onClick={() => handleLogout()}>Log out</button>
                             </>

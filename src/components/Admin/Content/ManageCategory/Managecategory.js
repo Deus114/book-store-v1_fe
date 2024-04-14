@@ -26,7 +26,6 @@ const ManageCategory = (props) => {
     const fetchListPaginate = async (page) => {
         let res = await getAllCategories(page, limitUser);
         if (res.EC === 0) {
-            console.log(res.DT)
             setListCategory(res.DT.categories);
             setPageCount(res.DT.totalPages);
         }

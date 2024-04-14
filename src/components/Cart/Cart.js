@@ -124,11 +124,11 @@ const Cart = (props) => {
                         <th colSpan="2">{totalPrice.toLocaleString()}đ</th>
                     </tr>
                 </tbody>
-                <br></br>
-                <button className="btn btn-success"
-                    onClick={() => { window.alert("Update soon !!!") }}
-                >Mua hàng</button>
             </table>
+            <br></br>
+            <button className="btn btn-success"
+                onClick={() => { window.alert("Update soon !!!") }}
+            >Mua hàng</button>
             <br></br>
         </>
     )

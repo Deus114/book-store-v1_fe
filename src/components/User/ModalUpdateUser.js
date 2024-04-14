@@ -19,7 +19,6 @@ const ModalUpdateUser = (props) => {
     const [username, setUsername] = useState(account.user);
     const [phone, setPhone] = useState(account.phone);
     const [address, setAddress] = useState(account.address);
-    const [image, setImage] = useState("");
 
     const handleSubmit = async () => {
         // Validate
@@ -29,7 +28,7 @@ const ModalUpdateUser = (props) => {
         }
 
         // call API
-        let res = await putUpdateUser(account.id, username, phone, address, account.role, image);
+        let res = await putUpdateUser(account.id, username, phone, address, account.role);
         if (res && res.EC === 0) {
             dispatch(doLogin(res));
             handleClose();

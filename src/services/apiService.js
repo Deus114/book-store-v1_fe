@@ -1,7 +1,7 @@
 import axios from '../utils/axiosCuztomize';
 
 // User Api
-const postCreateNewUser = (email, password, username, phone, address, role, image) => {
+const postCreateNewUser = (email, password, username, phone, address, role) => {
     const data = new FormData();
     data.append('email', email);
     data.append('password', password);
@@ -9,7 +9,6 @@ const postCreateNewUser = (email, password, username, phone, address, role, imag
     data.append('phone', phone);
     data.append('address', address);
     data.append('role', role);
-    data.append('image', image);
     return axios.post('api/user', data);
 }
 
@@ -17,14 +16,13 @@ const getAllUsers = () => {
     return axios.get('api/users');
 }
 
-const putUpdateUser = (id, username, phone, address, role, image) => {
+const putUpdateUser = (id, username, phone, address, role) => {
     const data = new FormData();
     data.append('id', id);
     data.append('username', username);
     data.append('phone', phone);
     data.append('address', address);
     data.append('role', role);
-    data.append('image', image);
     return axios.put('api/update-user', data);
 }
 
@@ -121,10 +119,11 @@ const delelteProduct = (id) => {
     return axios.delete('api/delete-product', { data: { id: id } });
 }
 
-const getProductsByCat = (category) => {
+const getProductsByCat = (category, index) => {
     return axios.get(`api/products-by-category`, {
         params: {
-            category: category.name,
+            category: category,
+            index: index,
         }
     });
 }

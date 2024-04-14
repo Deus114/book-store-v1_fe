@@ -39,8 +39,6 @@ const ViewProduct = (props) => {
             setStatus(productUpdate.status);
             if (productUpdate.image)
                 setPreviewImage(`data:image/jpeg;base64,${productUpdate.image}`);
-
-            console.log(category);
         }
     }, [productUpdate])
 

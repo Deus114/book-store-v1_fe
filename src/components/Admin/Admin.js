@@ -23,7 +23,9 @@ const Admin = (props) => {
             </div>
             <div className="admin-content">
                 <div className="admin-header">
-                    <FaBars className="side-toggle" onClick={() => setCollapsed(!collapsed)} />
+                    <FaBars className="side-toggle" onClick={() => setCollapsed(!collapsed)}
+                        style={{ fontSize: '1.5rem' }}
+                    />
                     <button className='btn-logout'
                         onClick={() => handleLogout()}
                     ><IoIosLogOut /> Log out</button>

@@ -12,11 +12,10 @@ const ModalCreateUser = (props) => {
         setShow(false);
         setEmail("");
         setPassword("");
+        setUsername("");
         setPhone("");
         setAddress("");
-        setImage("");
         setRole("USER");
-        setPreviewImage("");
     }
     // state
     const [email, setEmail] = useState("");
@@ -25,15 +24,6 @@ const ModalCreateUser = (props) => {
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const [role, setRole] = useState("USER");
-    const [image, setImage] = useState("");
-    const [previewImage, setPreviewImage] = useState("");
-
-    const handleUploadImg = (event) => {
-        if (event.target && event.target.files && event.target.files[0]) {
-            setPreviewImage(URL.createObjectURL(event.target.files[0]))
-            setImage(event.target.files[0])
-        }
-    }
 
     const validateEmail = (email) => {
         return String(email)
@@ -57,7 +47,7 @@ const ModalCreateUser = (props) => {
         }
 
         // call API
-        let res = await postCreateNewUser(email, password, username, phone, address, role, image);
+        let res = await postCreateNewUser(email, password, username, phone, address, role);
         if (res && res.EC === 0) {
             toast.success(res.EM);
             handleClose();
@@ -119,18 +109,6 @@ const ModalCreateUser = (props) => {
                                 <option value="USER">USER</option>
                                 <option value="ADMIN">ADMIN</option>
                             </select>
-                        </div>
-                        <div className="col-md-12">
-                            <label className="form-label label-upload" htmlFor="labelUpload">
-                                <FcPlus /> Upload File Image</label>
-                            <input type='file' id='labelUpload' hidden onChange={(event) => handleUploadImg(event)} />
-                        </div>
-                        <div className="col--md-12 img-preview">
-                            {previewImage ?
-                                <img src={previewImage} />
-                                :
-                                <span>Preview</span>
-                            }
                         </div>
                     </form>
                 </Modal.Body>
