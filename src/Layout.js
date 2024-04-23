@@ -20,12 +20,15 @@ import ShowProduct from './components/Home/showProduct';
 import ProductDetail from './components/Home/productDetail';
 import PrivateRouteUser from './routes/PrivateRoutesUser';
 import Cart from './components/Cart/Cart';
+import Order from './components/User/Order';
+import Cancel from './components/User/CancelPayment';
+import Success from './components/User/SuccessPayment';
+import History from './components/User/History';
 
 const Layout = () => {
     return (
         <>
             <Routes>
-
                 <Route path="/" element={<App />} >
                     <Route index element={<Homepage />}></Route>
                     <Route path="show-product" element={<ShowProduct />} />
@@ -38,6 +41,26 @@ const Layout = () => {
                     <Route path="cart" element={
                         <PrivateRouteUser>
                             <Cart />
+                        </PrivateRouteUser>
+                    } />
+                    <Route path="order" element={
+                        <PrivateRouteUser>
+                            <Order />
+                        </PrivateRouteUser>
+                    } />
+                    <Route path="cancel" element={
+                        <PrivateRouteUser>
+                            <Cancel />
+                        </PrivateRouteUser>
+                    } />
+                    <Route path="success" element={
+                        <PrivateRouteUser>
+                            <Success />
+                        </PrivateRouteUser>
+                    } />
+                    <Route path="history" element={
+                        <PrivateRouteUser>
+                            <History />
                         </PrivateRouteUser>
                     } />
                 </Route>

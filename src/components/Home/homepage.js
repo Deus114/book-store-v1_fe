@@ -74,7 +74,7 @@ const Homepage = () => {
                     }
                 </div>
             </div> <br></br>
-            <h4 className='ttle'>SẢN BÁN CHẠY NHẤT</h4>
+            <h4 className='ttle'>SẢN PHẨM BÁN CHẠY NHẤT</h4>
             <div className="row">
                 <div className="row justify-content-start">
                     {listProductsbuy && listProductsbuy.length > 0 &&

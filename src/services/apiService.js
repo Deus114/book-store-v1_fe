@@ -165,9 +165,45 @@ const deleteCart = (id) => {
     });
 }
 
+const deleteAllCart = (id) => {
+    return axios.delete('api/delete-allcart', {
+        params: {
+            userId: id,
+        }
+    });
+}
+
 // Admin Board Api
 const getAdminBoard = () => {
     return axios.get(`api/admin-board`);
+}
+
+// Order api
+const postOrder = (content, totalQuantity, totalPrice, name, email, phone, address, payment, status, userId) => {
+    const data = new FormData();
+    data.append('content', content);
+    data.append('totalQuantity', totalQuantity);
+    data.append('totalPrice', totalPrice);
+    data.append('name', name);
+    data.append('email', email);
+    data.append('phone', phone);
+    data.append('address', address);
+    data.append('payment', payment);
+    data.append('status', status);
+    data.append('userId', userId);
+    return axios.post('api/order', data);
+}
+
+const postQrPayment = () => {
+    return axios.post('api/create-payment-link');
+}
+
+const getorderById = (id) => {
+    return axios.get('api/order-by-id', {
+        params: {
+            id: id,
+        }
+    });
 }
 
 export {
@@ -182,5 +218,7 @@ export {
     getProductsNew, getProductsBuy,
     getProductsByCat, postCart,
     getuserCart, plusProduct,
-    deleteCart, getAdminBoard
+    deleteCart, getAdminBoard,
+    postOrder, deleteAllCart,
+    postQrPayment, getorderById
 };

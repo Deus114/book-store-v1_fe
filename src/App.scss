@@ -86,6 +86,29 @@ body {
       }
     }
 
+    .cart {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      position: relative;
+      min-width: 116px;
+
+      .cart-nofi {
+        position: absolute;
+        z-index: 30;
+        top: 0;
+        right: 0px;
+        width: 25px;
+        height: 25px;
+        background-color: red;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+        color: white;
+      }
+    }
+
     .nav-link {
       white-space: nowrap;
       overflow: hidden;
@@ -267,10 +290,17 @@ body {
 
     .back {
       cursor: pointer;
+      margin-left: 10px;
 
       &:hover {
         opacity: 0.6;
       }
+    }
+
+    .success {
+      margin-left: 40%;
+      color: green;
+      font-size: larger;
     }
 
     .cart {

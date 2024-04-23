@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux'
-import { deleteCart, getuserCart, plusProduct, postCart } from "../../services/apiService";
+import { deleteCart, getuserCart, plusProduct } from "../../services/apiService";
 import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
+import { FaClipboardList } from "react-icons/fa";
 
-const Cart = (props) => {
+const Cart = () => {
     const [listCart, setlistCart] = useState([]);
     const navigate = useNavigate();
     let totalPrice = 0;
@@ -76,6 +77,12 @@ const Cart = (props) => {
                 <span className='back'
                     onClick={() => navigate('/')}>&#60;&#60; Tiếp tục mua hàng</span>
             </div>
+            <br></br>
+            <div>
+                <span className='back'
+                    onClick={() => navigate('/history')}><FaClipboardList /> Lịch sử mua hàng</span>
+            </div>
+            <br></br>
             <h2 className="ttle">Giỏ hàng của bạn</h2>
             <hr />
             <table className="table table-hover">
@@ -99,7 +106,7 @@ const Cart = (props) => {
                             <tr key={index}>
                                 <td>{index + 1}</td>
                                 <td>{item.productName}</td>
-                                <td><img src={src} alt={item.name} width="60" /></td>
+                                <td><img src={src} alt={item.productName} width="60" /></td>
                                 <td>{(+item.price).toLocaleString()} đ</td>
                                 <td><FiMinusCircle
                                     onClick={() => handleMinus(item.productName, item.quantity)}
@@ -127,7 +134,10 @@ const Cart = (props) => {
             </table>
             <br></br>
             <button className="btn btn-success"
-                onClick={() => { window.alert("Update soon !!!") }}
+                onClick={() => {
+                    if (totalQuantity >= 1)
+                        navigate('/order')
+                }}
             >Mua hàng</button>
             <br></br>
         </>

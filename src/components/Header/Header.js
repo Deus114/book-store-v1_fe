@@ -8,12 +8,26 @@ import logo from '../../assets/logo-bookstore.png'
 import { IoPersonOutline } from "react-icons/io5";
 import { AiOutlineHome } from "react-icons/ai";
 import { IoCart } from "react-icons/io5";
+import { useEffect, useState } from 'react';
+import { getuserCart } from '../../services/apiService';
 
 const Header = () => {
     const navigate = useNavigate();
     const account = useSelector(state => state.user.account)
     const dispatch = useDispatch();
     const isAuthenticated = useSelector(state => state.user.isAuthenticated);
+    const [cart, setCart] = useState(0);
+
+    useEffect(() => {
+        getCart();
+    }, [window.location.href])
+
+    const getCart = async () => {
+        let res = await getuserCart(account?.id)
+        if (res.EC === 0) {
+            setCart(res.DT.length);
+        }
+    }
 
     const handleLogin = () => {
         navigate('/login');
@@ -31,7 +45,6 @@ const Header = () => {
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container>
-                {/* <Navbar.Brand href="/">Quizz</Navbar.Brand> */}
                 <img className="nav-content logo" src={logo} alt="Book Store" width="6%" />
                 <NavLink to="/" className='navbar-brand'>Book Store</NavLink>
                 <form className="d-flex search">
@@ -51,12 +64,11 @@ const Header = () => {
                                 <button className='btn-signup' onClick={() => handleRegister()}>Sign up</button>
                             </>
                             :
-                            // <NavDropdown title="Setting">
-                            //     <NavDropdown.Item>Profile</NavDropdown.Item>
-                            //     <NavDropdown.Item onClick={() => handleLogout()}>Logout</NavDropdown.Item>
-                            // </NavDropdown>
                             <>
-                                <NavLink to="/cart" className='nav-link'><IoCart style={{ fontSize: '1.5rem' }} /> Giỏ hàng</NavLink>
+                                <NavLink to="/cart" className='nav-link cart'><IoCart style={{ fontSize: '1.5rem' }}
+                                /> Giỏ hàng
+                                    {cart === 0 ? <></> : <span className="cart-nofi"><span>{cart}</span></span>}
+                                </NavLink>
                                 <NavLink to="/user" className='nav-link'><IoPersonOutline /> {
                                     account.user ? account.user : account.email
                                 }

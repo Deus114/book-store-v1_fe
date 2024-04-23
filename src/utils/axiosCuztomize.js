@@ -2,7 +2,7 @@ import axios from "axios";
 import NProgress from "nprogress";
 
 const instance = axios.create({
-    baseURL: 'https://bookstore-52c6.onrender.com/',
+    baseURL: 'http://localhost:3001/',
 });
 
 // Add a request interceptor

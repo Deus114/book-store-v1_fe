@@ -40,7 +40,9 @@ const App = () => {
         <Header />
       </div>
       <div className='main-container'>
-        {window.location.pathname === "/cart" || window.location.pathname === "/user" ?
+        {window.location.pathname === "/cart" || window.location.pathname === "/user" || window.location.pathname === "/order"
+          || window.location.pathname === "/cancel" || window.location.pathname === "/success" || window.location.pathname === "/history"
+          ?
           <>
             <div className='cart'>
               <Outlet />
