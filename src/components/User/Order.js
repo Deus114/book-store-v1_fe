@@ -21,7 +21,6 @@ const Order = () => {
 
     useEffect(() => {
         getlist();
-        getparam();
     }, [])
 
     const getlist = async () => {
@@ -29,12 +28,6 @@ const Order = () => {
         if (res.EC === 0) {
             setlistCart(res.DT);
         }
-    }
-
-    const getparam = async () => {
-        const queryParams = new URLSearchParams(window.location.search);
-        const paramValue = queryParams.get('cancel');
-        console.log(paramValue);
     }
 
     const validateEmail = (email) => {
